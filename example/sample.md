@@ -11,6 +11,31 @@ exports:
     conference_venue: Woodstock, NY
     acm_doi: 10.1145/XXXXXXX.XXXXXXX
     acm_isbn: 978-1-4503-XXXX-X/2018/06
+    ccs: |
+      \begin{CCSXML}
+      <ccs2012>
+       <concept>
+        <concept_id>10010520.10010553.10010562</concept_id>
+        <concept_desc>Computer systems organization~Embedded systems</concept_desc>
+        <concept_significance>500</concept_significance>
+       </concept>
+       <concept>
+        <concept_id>10010520.10010575.10010755</concept_id>
+        <concept_desc>Computer systems organization~Redundancy</concept_desc>
+        <concept_significance>300</concept_significance>
+       </concept>
+       <concept>
+        <concept_id>10003033.10003083.10003095</concept_id>
+        <concept_desc>Networks~Network reliability</concept_desc>
+        <concept_significance>100</concept_significance>
+       </concept>
+      </ccs2012>
+      \end{CCSXML}
+
+      \ccsdesc[500]{Computer systems organization~Embedded systems}
+      \ccsdesc[300]{Computer systems organization~Redundancy}
+      \ccsdesc{Computer systems organization~Robotics}
+      \ccsdesc[100]{Networks~Network reliability}
 authors:
   - name: Ben Trovato
     email: trovato@corporation.com
