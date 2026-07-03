@@ -94,6 +94,7 @@ For proceedings formats (`sigconf`, `sigplan`, `acmengage`, etc.):
 - `badge_image`, `badge_url` — artifact evaluation badge
 - `code_links`, `data_links` — code/data repository URLs (acmcp/JDS)
 - `acm_contributions` — author contributions statement (acmcp/JDS)
+- `usecorresponding` — whether to emit `\correspondingauthor` marks for corresponding authors (default: `true`)
 
 See `template.yml` for the complete list of options and their descriptions.
 
@@ -108,7 +109,9 @@ Authors support the following fields:
 - `name` (required) — full author name
 - `email` — email address
 - `orcid` — ORCID identifier
-- `corresponding` — mark as corresponding author (boolean)
+- `corresponding` — mark as corresponding author. **Note:** if no author is explicitly marked as corresponding, MyST automatically marks the first author as corresponding.
+
+  The template option `usecorresponding` (default: `true`) controls whether any `\correspondingauthor` marks are emitted at all. Set it to `false` to suppress corresponding-author marks regardless of the per-author `corresponding` flags.
 - `note` — author footnote via `\authornote`
 - `authornotemark` — reference a shared author footnote by number
 - `additional_affiliations` — additional affiliations rendered via `\additionalaffiliation` (same fields as a regular affiliation)

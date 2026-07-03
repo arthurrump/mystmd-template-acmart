@@ -138,7 +138,7 @@
 [# if author.orcid #]
 \orcid{[- author.orcid -]}
 [# endif #]
-[# if author.corresponding #]
+[# if options.usecorresponding and author.corresponding #]
 \correspondingauthor
 [# endif #]
 [# if author.note #]

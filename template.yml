@@ -117,6 +117,12 @@ options:
     description: Use natbib for citations
     default: true
   - type: boolean
+    id: usecorresponding
+    description: >
+      Emit \correspondingauthor for authors marked as corresponding. Set to
+      false to suppress all corresponding-author marks.
+    default: true
+  - type: boolean
     id: urlbreakonhyphens
     description: Allow URLs to break on hyphens
     default: true

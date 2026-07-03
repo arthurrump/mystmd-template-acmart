@@ -40,7 +40,6 @@ authors:
   - name: Ben Trovato
     email: trovato@corporation.com
     orcid: 0000-0002-1825-0097
-    corresponding: true
     affiliations:
       - inst1
   - name: G.K.M. Tobin
