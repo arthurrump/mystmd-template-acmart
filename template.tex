@@ -1,0 +1,264 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MyST Markdown template for ACM journals and proceedings.
+% Based on the official acmart document class.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+[# set class_options = options.acm_format #]
+[# if options.screen #][# set class_options = class_options + ',screen' #][# endif #]
+[# if options.review #][# set class_options = class_options + ',review' #][# endif #]
+[# if options.anonymous #][# set class_options = class_options + ',anonymous' #][# endif #]
+[# if options.authorversion #][# set class_options = class_options + ',authorversion' #][# endif #]
+[# if options.nonacm #][# set class_options = class_options + ',nonacm' #][# endif #]
+[# if options.balance #][# set class_options = class_options + ',balance' #][# else #][# set class_options = class_options + ',balance=false' #][# endif #]
+[# if options.pbalance #][# set class_options = class_options + ',pbalance' #][# endif #]
+[# if options.timestamp #][# set class_options = class_options + ',timestamp' #][# endif #]
+[# if options.authordraft #][# set class_options = class_options + ',authordraft' #][# endif #]
+[# if options.urlbreakonhyphens is defined #][# if not options.urlbreakonhyphens #][# set class_options = class_options + ',urlbreakonhyphens=false' #][# endif #][# endif #]
+[# if options.acmthm is defined #][# if not options.acmthm #][# set class_options = class_options + ',acmthm=false' #][# endif #][# endif #]
+[# if options.font_size #][# set class_options = class_options + ',' + options.font_size #][# endif #]
+[# if options.natbib #][# else #][# set class_options = class_options + ',natbib=false' #][# endif #]
+[# if options.language #][# set class_options = class_options + ',language=' + options.language #][# endif #]
+[# if options.draft #][# set class_options = class_options + ',draft' #][# endif #]
+\documentclass[[- class_options -]]{acmart}
+
+[- IMPORTS -]
+
+%% Rights management and publication metadata
+\setcopyright{[- options.copyright_mode -]}
+[# if options.copyright_mode == 'cc' and (options.cc_type or options.cc_version) #]
+\setcctype[# if options.cc_version #][[- options.cc_version -]][# else #]4.0[# endif #]{[- options.cc_type or 'by' -]}
+[# endif #]
+[# if options.copyright_year #]
+\copyrightyear{[- options.copyright_year -]}
+[# endif #]
+[# if options.acm_year #]
+\acmYear{[- options.acm_year -]}
+[# endif #]
+[# if options.acm_doi #]
+\acmDOI{[- options.acm_doi -]}
+[# endif #]
+[# if options.acm_article_type #]
+\acmArticleType{[- options.acm_article_type -]}
+[# endif #]
+
+[# if options.acm_format in ['manuscript', 'acmsmall', 'acmlarge', 'acmtog', 'acmcp'] #]
+%% Journal metadata
+[# if options.acm_journal #]
+\acmJournal{[- options.acm_journal -]}
+[# endif #]
+[# if options.acm_volume #]
+\acmVolume{[- options.acm_volume -]}
+[# endif #]
+[# if options.acm_number #]
+\acmNumber{[- options.acm_number -]}
+[# endif #]
+[# if options.acm_article #]
+\acmArticle{[- options.acm_article -]}
+[# endif #]
+[# if options.acm_month #]
+\acmMonth{[- options.acm_month -]}
+[# endif #]
+[# else #]
+%% Proceedings metadata
+[# if options.conference_name #]
+\acmConference[[- options.conference_short_name -]]{[- options.conference_name -]}{[- options.conference_date -]}{[- options.conference_venue -]}
+[# endif #]
+[# if options.acm_booktitle #]
+\acmBooktitle{[- options.acm_booktitle -]}
+[# endif #]
+[# if options.acm_isbn #]
+\acmISBN{[- options.acm_isbn -]}
+[# endif #]
+[# endif #]
+
+[# if doc.editors #]
+[# for editor in doc.editors #]
+\editor{[- editor -]}
+[# endfor #]
+[# endif #]
+[# if options.received_date #]
+\received{[- options.received_date -]}
+[# endif #]
+[# if options.revised_date #]
+\received[revised]{[- options.revised_date -]}
+[# endif #]
+[# if options.accepted_date #]
+\received[accepted]{[- options.accepted_date -]}
+[# endif #]
+
+[# if options.submission_id #]
+\acmSubmissionID{[- options.submission_id -]}
+[# endif #]
+
+[# set topmatter = '' #]
+[# if options.printccs is defined #]
+[# if options.printccs #][# set topmatter = topmatter + 'printccs=true' #][# else #][# set topmatter = topmatter + 'printccs=false' #][# endif #]
+[# endif #]
+[# if options.printacmref is defined #]
+[# if topmatter #][# set topmatter = topmatter + ',' #][# endif #]
+[# if options.printacmref #][# set topmatter = topmatter + 'printacmref=true' #][# else #][# set topmatter = topmatter + 'printacmref=false' #][# endif #]
+[# endif #]
+[# if options.printfolios is defined #]
+[# if topmatter #][# set topmatter = topmatter + ',' #][# endif #]
+[# if options.printfolios #][# set topmatter = topmatter + 'printfolios=true' #][# else #][# set topmatter = topmatter + 'printfolios=false' #][# endif #]
+[# endif #]
+[# if options.authorsperrow #]
+[# if topmatter #][# set topmatter = topmatter + ',' #][# endif #]
+[# set topmatter = topmatter + 'authorsperrow=' + options.authorsperrow #]
+[# endif #]
+[# if topmatter #]
+\settopmatter{[- topmatter -]}
+[# endif #]
+
+[# if options.natbib and options.citation_style and options.citation_style != 'acmnumeric' #]
+\citestyle{[- options.citation_style -]}
+[# endif #]
+
+\begin{document}
+
+[# if doc.short_title #]
+\title[[- doc.short_title -]]{[- doc.title -]}
+[# else #]
+\title{[- doc.title -]}
+[# endif #]
+[# if options.title_notes #]
+\titlenote{[- options.title_notes -]}
+[# endif #]
+
+[# if doc.subtitle #]
+\subtitle{[- doc.subtitle -]}
+[# if options.subtitle_notes #]
+\subtitlenote{[- options.subtitle_notes -]}
+[# endif #]
+[# endif #]
+
+%% Authors and affiliations
+[# for author in doc.authors #]
+\author{[- author.name -]}
+[# if author.orcid #]
+\orcid{[- author.orcid -]}
+[# endif #]
+[# if author.email #]
+\email{[- author.email -]}
+[# endif #]
+[# if author.corresponding #]
+\correspondingauthor
+[# endif #]
+[# if author.note #]
+\authornote{[- author.note -]}
+[# endif #]
+[# if author.authornotemark #]
+\authornotemark[# if author.authornotemark is number #][[- author.authornotemark -]][# endif #]
+[# endif #]
+[# for affiliation in author.affiliations #]
+\affiliation{%
+[# if affiliation.position #]
+\position{[- affiliation.position -]}
+[# endif #]
+[# if affiliation.name #]
+\institution{[- affiliation.name -]}
+[# elif affiliation.institution #]
+\institution{[- affiliation.institution -]}
+[# endif #]
+[# if affiliation.department #]
+\department{[- affiliation.department -]}
+[# endif #]
+[# if affiliation.city #]
+\city{[- affiliation.city -]}
+[# endif #]
+[# if affiliation.state #]
+\state{[- affiliation.state -]}
+[# endif #]
+[# if affiliation.country #]
+\country{[- affiliation.country -]}
+[# endif #]
+}
+[# endfor #]
+[# for addl_aff in author.additional_affiliations #]
+\additionalaffiliation{%
+[# if addl_aff.position #]
+\position{[- addl_aff.position -]}
+[# endif #]
+[# if addl_aff.name #]
+\institution{[- addl_aff.name -]}
+[# elif addl_aff.institution #]
+\institution{[- addl_aff.institution -]}
+[# endif #]
+[# if addl_aff.department #]
+\department{[- addl_aff.department -]}
+[# endif #]
+[# if addl_aff.city #]
+\city{[- addl_aff.city -]}
+[# endif #]
+[# if addl_aff.state #]
+\state{[- addl_aff.state -]}
+[# endif #]
+[# if addl_aff.country #]
+\country{[- addl_aff.country -]}
+[# endif #]
+}
+[# endfor #]
+[# endfor #]
+
+[# if options.short_authors #]
+\renewcommand{\shortauthors}{[- options.short_authors -]}
+[# endif #]
+
+[# if parts.teaser #]
+\begin{teaserfigure}
+[- parts.teaser -]
+\end{teaserfigure}
+[# endif #]
+
+[# if parts.abstract #]
+\begin{abstract}
+[- parts.abstract -]
+\end{abstract}
+[# endif #]
+
+[# if parts.ccs #]
+[- parts.ccs -]
+[# endif #]
+
+[# if doc.keywords #]
+\keywords{[- doc.keywords | join(", ") -]}
+[# endif #]
+
+[# if options.acm_contributions #]
+\acmContributions{[- options.acm_contributions -]}
+[# endif #]
+[# if options.code_links #]
+\acmCodeLink{[- options.code_links -]}
+[# endif #]
+[# if options.data_links #]
+\acmDataLink{[- options.data_links -]}
+[# endif #]
+[# if options.badge_image #]
+[# if options.badge_url #]
+\acmBadge[[- options.badge_url -]]{[- options.badge_image -]}
+[# else #]
+\acmBadge{[- options.badge_image -]}
+[# endif #]
+[# endif #]
+
+\maketitle
+
+[- CONTENT -]
+
+[# if parts.acknowledgments #]
+\begin{acks}
+[- parts.acknowledgments -]
+\end{acks}
+[# endif #]
+
+[# if parts.appendix #]
+\appendix
+[- parts.appendix -]
+[# endif #]
+
+[# if doc.bibliography #]
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{[- doc.bibliography | join(", ") | replace(".bib", "") -]}
+[# endif #]
+
+\end{document}

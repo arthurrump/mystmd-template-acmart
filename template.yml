@@ -1,0 +1,345 @@
+jtex: v1
+title: ACM Conference and Journal Template
+description: >
+  Template for ACM journals and proceedings, using the official acmart document
+  class.
+version: 1.0.0
+license: LPPL-1.3c
+source: https://www.acm.org/publications/proceedings-template
+thumbnail: ./thumbnail.png
+authors:
+  - name: Arthur Rump
+    website: https://arthurrump.com
+    affiliations:
+      - University of Twente
+tags:
+  - paper
+  - journal
+  - conference
+  - acm
+style:
+  citation: numerical-only
+parts:
+  - id: abstract
+    required: true
+    description: |
+      A short summary of the work to be presented in the article.
+  - id: ccs
+    title: ACM Computing Classification System
+    required: false
+    description: >
+      CCS concepts for the article. Provide the full LaTeX block (for example
+      using a raw LaTeX block) including the CCSXML environment and \ccsdesc
+      commands.
+  - id: teaser
+    title: Teaser Figure
+    required: false
+    description: >
+      A teaser figure placed after author information and before the body of the
+      document. Provide the full figure content (e.g. \includegraphics and
+      \caption).
+  - id: acknowledgments
+    required: false
+    description: >
+      Identification of funding sources and thanks to individuals and groups
+      that assisted in the research and preparation of the work.
+  - id: appendix
+    required: false
+    description: >
+      Additional material to be rendered after the main body and before the
+      bibliography.
+doc:
+  - id: title
+    required: true
+  - id: subtitle
+    required: false
+  - id: short_title
+    required: false
+  - id: authors
+    required: true
+  - id: editors
+    required: false
+    description: >
+      List of editors for the volume or proceedings. Each editor is a string
+      (e.g. "Jennifer B. Sartor").
+  - id: affiliations
+  - id: keywords
+  - id: bibliography
+options:
+  - type: choice
+    id: acm_format
+    required: true
+    description: ACM template format
+    default: sigconf
+    choices:
+      - manuscript
+      - acmsmall
+      - acmlarge
+      - acmtog
+      - sigconf
+      - siggraph
+      - sigplan
+      - sigchi
+      - sigchi-a
+      - acmengage
+      - acmcp
+  - type: boolean
+    id: screen
+    description: Use colored hyperlinks
+    default: false
+  - type: boolean
+    id: review
+    description: Enable review mode with line numbers and folios
+    default: false
+  - type: boolean
+    id: anonymous
+    description: Anonymize the work for double-anonymous review
+    default: false
+  - type: boolean
+    id: authorversion
+    description: Produce an author-version of the work
+    default: false
+  - type: boolean
+    id: nonacm
+    description: Disable ACM reference format and copyright
+    default: false
+  - type: boolean
+    id: balance
+    description: Balance the last two columns
+    default: true
+  - type: boolean
+    id: pbalance
+    description: Permanently balance columns on the last page
+    default: false
+  - type: boolean
+    id: natbib
+    description: Use natbib for citations
+    default: true
+  - type: boolean
+    id: urlbreakonhyphens
+    description: Allow URLs to break on hyphens
+    default: true
+  - type: boolean
+    id: acmthm
+    description: Define theorem-like environments
+    default: true
+  - type: boolean
+    id: timestamp
+    description: Add a timestamp to each page
+    default: false
+  - type: boolean
+    id: authordraft
+    description: Enable author draft mode
+    default: false
+  - type: choice
+    id: citation_style
+    description: Citation style
+    default: acmnumeric
+    choices:
+      - acmnumeric
+      - acmauthoryear
+  - type: choice
+    id: copyright_mode
+    description: Copyright mode
+    default: acmlicensed
+    choices:
+      - none
+      - acmcopyright
+      - acmlicensed
+      - rightsretained
+      - usgov
+      - usgovmixed
+      - cagov
+      - cagovmixed
+      - licensedusgovmixed
+      - licensedcagov
+      - licensedcagovmixed
+      - othergov
+      - licensedothergov
+      - iw3c2w3
+      - iw3c2w3g
+      - cc
+  - type: string
+    id: cc_type
+    description: >
+      Creative Commons license type. Only used when copyright_mode is cc. One
+      of: zero, by, by-sa, by-nd, by-nc, by-nc-sa, by-nc-nd. Defaults to by.
+  - type: string
+    id: cc_version
+    description: >
+      Creative Commons license version. Only used when copyright_mode is cc.
+      One of: 3.0, 4.0. Defaults to 4.0.
+  - type: choice
+    id: acm_article_type
+    description: >
+      Article type. Primarily used for the acmcp format (JDS journal).
+    choices:
+      - Research
+      - Review
+      - Discussion
+      - Invited
+      - Position
+  - type: choice
+    id: font_size
+    description: Font size option
+    choices:
+      - 8pt
+      - 9pt
+      - 10pt
+      - 11pt
+      - 12pt
+  - type: string
+    id: language
+    description: >
+      Main document language (e.g. english, french, german). Uses babel. For
+      multiple languages, use raw LaTeX in the document preamble.
+  - type: boolean
+    id: draft
+    description: Pass the draft option to the underlying amsart class
+    default: false
+  - type: string
+    id: acm_journal
+    description: ACM journal code (for journal formats)
+  - type: string
+    id: conference_short_name
+    description: Short conference name (for proceedings formats)
+  - type: string
+    id: conference_name
+    description: Full conference name (for proceedings formats)
+  - type: string
+    id: conference_date
+    description: Conference dates (for proceedings formats)
+  - type: string
+    id: conference_venue
+    description: Conference venue (for proceedings formats)
+  - type: string
+    id: title_notes
+    description: Footnote text for the title (uses \titlenote)
+  - type: string
+    id: subtitle_notes
+    description: Footnote text for the subtitle (uses \subtitlenote)
+  - type: string
+    id: acm_booktitle
+    description: Conference proceedings booktitle
+  - type: string
+    id: acm_isbn
+    description: Conference ISBN
+  - type: string
+    id: acm_doi
+    description: ACM DOI
+  - type: string
+    id: acm_volume
+    description: Journal volume
+  - type: string
+    id: acm_number
+    description: Journal number
+  - type: string
+    id: acm_article
+    description: Journal article number
+  - type: string
+    id: acm_month
+    description: Publication month as a number (1-12)
+  - type: string
+    id: acm_year
+    description: Publication year
+  - type: string
+    id: copyright_year
+    description: Copyright year
+  - type: string
+    id: submission_id
+    description: ACM submission ID
+  - type: string
+    id: received_date
+    description: Date the manuscript was received
+  - type: string
+    id: revised_date
+    description: Date the manuscript was revised
+  - type: string
+    id: accepted_date
+    description: Date the manuscript was accepted
+  - type: boolean
+    id: printccs
+    description: Print CCS concepts
+  - type: boolean
+    id: printacmref
+    description: Print ACM reference format
+  - type: boolean
+    id: printfolios
+    description: Print page numbers
+  - type: string
+    id: authorsperrow
+    description: >
+      Number of authors per row in the title block. Must be a number (e.g. 3).
+      Set to 0 for automatic layout.
+  - type: string
+    id: short_authors
+    description: >
+      Shortened author list for page headers. Use \and to separate multiple
+      authors (e.g. "Author One \and Author Two").
+  - type: string
+    id: acm_contributions
+    description: >
+      Author contributions statement. Primarily used for the acmcp format
+      (JDS journal).
+  - type: string
+    id: badge_image
+    description: >
+      Filename of an artifact evaluation badge graphic. Uses \acmBadge.
+  - type: string
+    id: badge_url
+    description: >
+      Optional URL for the artifact evaluation badge (link to badge authority).
+  - type: string
+    id: code_links
+    description: >
+      URL to a code repository. Uses \acmCodeLink. For multiple links, use
+      a raw LaTeX block in your content.
+  - type: string
+    id: data_links
+    description: >
+      URL to a data repository. Uses \acmDataLink. For multiple links, use
+      a raw LaTeX block in your content.
+files:
+  - template.tex
+  - acmart.cls
+  - ACM-Reference-Format.bst
+  - acm-jdslogo.png
+packages:
+  - amsmath
+  - amssymb
+  - babel
+  - balance
+  - booktabs
+  - caption
+  - cmap
+  - comment
+  - draftwatermark
+  - environ
+  - etoolbox
+  - fancyhdr
+  - float
+  - fontenc
+  - framed
+  - geometry
+  - graphicx
+  - hyperref
+  - hyperxmp
+  - iftex
+  - libertine
+  - manyfoot
+  - microtype
+  - natbib
+  - newtxmath
+  - pbalance
+  - pifont
+  - refcount
+  - setspace
+  - totpages
+  - unicode-math
+  - xcolor
+  - xkeyval
+  - xstring
+  - zi4
+  - zref-savepos
+  - zref-user
+myst: v1
