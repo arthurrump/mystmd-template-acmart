@@ -306,6 +306,11 @@ options:
     description: >
       URL to a data repository. Uses \acmDataLink. For multiple links, use
       a raw LaTeX block in your content.
+  - type: string
+    id: extra_imports
+    description: >
+      Raw LaTeX placed in the header, useful to add additional \usepackage
+      imports. Include as a literal block scalar (|) in YAML frontmatter.
 files:
   - template.tex
   - acmart.cls

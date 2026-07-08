@@ -22,6 +22,9 @@
 \documentclass[[- class_options -]]{acmart}
 
 [- IMPORTS -]
+[# if options.extra_imports #]
+[- options.extra_imports -]
+[# endif #]
 
 %% Rights management and publication metadata
 \setcopyright{[- options.copyright_mode -]}
