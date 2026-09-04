@@ -1,6 +1,6 @@
-# acmart
+# MyST acmart template
 
-Template for ACM journals and proceedings, using [acmart.cls](https://github.com/borisveytsman/acmart).
+Template for ACM journals and proceedings, using [acmart.cls](https://github.com/borisveytsman/acmart). This repository also includes some optional [plugins](plugins/README.md) to tweak the LaTeX output.
 
 ![](thumbnail.png)
 
@@ -15,7 +15,7 @@ Use this template with [MyST Markdown](https://mystmd.org):
 title: Your Article Title
 exports:
   - format: pdf+tex
-    template: ../path/to/acmart
+    template: https://github.com/arthurrump/mystmd-template-acmart.git
     acm_format: sigconf
     conference_name: ACM Conference
     conference_date: June 2026
@@ -25,6 +25,14 @@ exports:
 
 ```bash
 myst build your-document.md
+```
+
+To use the plugins in this repository, add them to the project plugins in your *myst.yml*:
+
+```yaml
+project:
+  plugins:
+    - https://github.com/arthurrump/mystmd-template-acmart/raw/main/plugins/acmart-figure-description.mjs
 ```
 
 ## Template Options
