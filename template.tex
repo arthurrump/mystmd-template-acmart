@@ -29,7 +29,7 @@
 %% Rights management and publication metadata
 \setcopyright{[- options.copyright_mode -]}
 [# if options.copyright_mode == 'cc' and (options.cc_type or options.cc_version) #]
-\setcctype[# if options.cc_version #][[- options.cc_version -]][# else #]4.0[# endif #]{[- options.cc_type or 'by' -]}
+\setcctype[# if options.cc_version #][[- options.cc_version -]][# endif #]{[- options.cc_type or 'by' -]}
 [# endif #]
 [# if options.copyright_year #]
 \copyrightyear{[- options.copyright_year -]}

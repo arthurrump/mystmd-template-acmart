@@ -64,8 +64,8 @@ The most important option is `acm_format`, which selects the ACM template style:
 
 - `citation_style` — `acmnumeric` (default) or `acmauthoryear`
 - `copyright_mode` — copyright mode, e.g. `acmlicensed`, `acmcopyright`, `rightsretained`, `cc`, `usgov`, etc.
-- `cc_type` — Creative Commons license type when `copyright_mode` is `cc` (e.g. `by`, `by-nc`, `by-sa`)
-- `cc_version` — CC license version (default: `4.0`)
+- `cc_type` — Creative Commons license type when `copyright_mode` is `cc` (e.g. `by`, `by-nc`, `by-sa`; default: `by`)
+- `cc_version` — CC license version
 - `copyright_year` — copyright year
 
 ### Journal metadata
